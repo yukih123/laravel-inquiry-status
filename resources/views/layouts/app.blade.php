@@ -8,6 +8,12 @@
 </head>
 <body>
 
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <main>
         @yield('content')
     </main>
