@@ -25,7 +25,17 @@ class InquiryController extends Controller
 
     public function store(Request $request)
     {
-        // ここでDB保存（後でやる）
+        Inquiry::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' => $request->message,
+        ]);
+
+        return redirect()->route('inquiry.complete')->with('success', '送信しました');
+    }
+
+    public function complete(Request $request)
+    {
         return view('inquiry.complete');
     }
 
