@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Inquiry;
 
 class InquiryController extends Controller
 {
@@ -21,7 +22,12 @@ class InquiryController extends Controller
 
         Inquiry::create($validated);
 
-        return redirect()->back()->with('success', '送信しました');
+        return redirect()->route('inquiry.thanks')->with('success', '送信しました');
+    }
+
+    public function thanks()
+    {
+        return view('inquiry.thanks');
     }
 
     public function index()
