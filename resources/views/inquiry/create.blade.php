@@ -17,7 +17,7 @@
         <p class="error">入力内容にエラーがあります。</p>
     @endif
 
-    <form method="POST" action="{{ route('inquiry.store') }}">
+    <form method="POST" action="{{ route('inquiry.confirm') }}">
         @csrf
 
         @error('name')

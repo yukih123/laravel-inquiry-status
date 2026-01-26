@@ -12,22 +12,21 @@ class InquiryController extends Controller
         return view('inquiry.create');
     }
 
-    public function store(Request $request)
+    public function confirm(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|max:50',
+            'name' => 'required|max:255',
             'email' => 'required|email',
-            'message' => 'required|max:1000',
+            'message' => 'required',
         ]);
 
-        Inquiry::create($validated);
-
-        return redirect()->route('inquiry.thanks')->with('success', '送信しました');
+        return view('inquiry.confirm', $validated);
     }
 
-    public function thanks()
+    public function store(Request $request)
     {
-        return view('inquiry.thanks');
+        // ここでDB保存（後でやる）
+        return view('inquiry.complete');
     }
 
     public function index()
