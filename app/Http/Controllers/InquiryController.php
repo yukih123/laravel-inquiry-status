@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Inquiry;
+use App\Http\Requests\InquiryRequest;
 
 class InquiryController extends Controller
 {
@@ -12,18 +13,14 @@ class InquiryController extends Controller
         return view('inquiry.create');
     }
 
-    public function confirm(Request $request)
+    public function confirm(InquiryRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|email',
-            'message' => 'required',
-        ]);
+        $validated = $request->validated();
 
         return view('inquiry.confirm', $validated);
     }
 
-    public function store(Request $request)
+    public function store(InquiryRequest $request)
     {
         Inquiry::create([
             'name' => $request->name,
