@@ -33,7 +33,7 @@ class InquiryController extends Controller
         ]);
 
         Mail::to('test@example.com')
-            ->send(new InquiryMail($validated));
+            ->queue(new InquiryMail($validated));
 
 
         return redirect()->route('inquiry.complete')->with('success', '送信しました');
