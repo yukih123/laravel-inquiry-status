@@ -1,11 +1,11 @@
 お問い合わせがありました。
 
 ■ お名前
-{{ $data['name'] }}
+{{ $inquiry['name'] }}
 
 ■ メールアドレス
-{{ $data['email'] }}
+{{ $inquiry['email'] }}
 
 ■ 内容
-{{ $data['message'] }}
+{{ $inquiry['message'] }}
 

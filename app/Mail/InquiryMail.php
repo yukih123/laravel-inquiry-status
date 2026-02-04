@@ -2,20 +2,22 @@
 
 namespace App\Mail;
 
+use App\Models\Inquiry;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Throwable;
 
 class InquiryMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public array $data;
+    public Inquiry $inquiry;
 
-    public function __construct(array $data)
+    public function __construct(Inquiry $inquiry)
     {
-        $this->data = $data;
+        $this->inquiry = $inquiry;
     }
 
     public function build()
